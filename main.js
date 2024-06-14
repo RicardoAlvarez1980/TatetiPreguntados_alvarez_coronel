@@ -1,38 +1,47 @@
 let board = ["", "", "", "", "", "", "", "", ""];
 let currentPlayer = "X";
+let gameActive = true; // Variable para controlar si el juego está activo o no
 
 const cells = document.querySelectorAll("td");
-
-console.log(cells);
 
 cells.forEach((cell) => {
   cell.addEventListener("click", handleClick);
 });
 
 function handleClick(event) {
-  const cellIndex = Array.from(cells).indexOf(event.target);
-  console.log(cellIndex);
+  if (!gameActive) return; // Si el juego no está activo, salimos de la función
 
-  if (board[cellIndex] != "") {
+  const cellIndex = Array.from(cells).indexOf(event.target);
+
+  if (board[cellIndex] !== "") {
     return;
   }
 
   board[cellIndex] = currentPlayer;
   event.target.textContent = currentPlayer;
+  event.target.classList.add(currentPlayer.toLowerCase());
 
   if (checkWin()) {
-    console.log("Ganaste de nuevo");
+    gameActive = false; // Desactivamos el juego
+
+    setTimeout(() => {
+      alert(`¡Jugador ${currentPlayer} ha ganado!`);
+    }, 100); // Mostrar alert después de 100ms para que se vea el último movimiento
+
+    return;
   }
 
-  currentPlayer = currentPlayer == "X" ? "O" : "X";
-  /*
-    if(currentPlayer == 'X'){
-        currentPlayer = 'O'
-    }
-    else{
-        currentPlayer = 'X'
-    }
-   */
+  if (checkDraw()) {
+    gameActive = false; // Desactivamos el juego si hay empate
+
+    setTimeout(() => {
+      alert("¡Empate!");
+    }, 100); // Mostrar alert después de 100ms para que se vea el último movimiento
+
+    return;
+  }
+
+  currentPlayer = currentPlayer === "X" ? "O" : "X";
 }
 
 function checkWin() {
@@ -42,7 +51,7 @@ function checkWin() {
     [6, 7, 8], // horizontales
     [0, 3, 6],
     [1, 4, 7],
-    [2, 5, 8], // veticales
+    [2, 5, 8], // verticales
     [0, 4, 8],
     [2, 4, 6], // diagonales
   ];
@@ -52,8 +61,9 @@ function checkWin() {
     let isWin = true;
     for (let index2 = 0; index2 < winElement.length; index2++) {
       const posWin = winElement[index2];
-      if (board[posWin] != currentPlayer) {
+      if (board[posWin] !== currentPlayer) {
         isWin = false;
+        break;
       }
     }
     if (isWin) {
@@ -62,8 +72,8 @@ function checkWin() {
   }
 
   return false;
+}
 
-  return winConditions.some((condition) => {
-    return condition.every((index) => board[index] === currentPlayer);
-  });
+function checkDraw() {
+  return board.every((cell) => cell !== ""); // Retorna true si todas las celdas están llenas (empate)
 }
