@@ -38,6 +38,11 @@ El proyecto está organizado de la siguiente manera:
 
 4. Para reiniciar el juego, haz clic en el botón "Reiniciar Juego".
 
+## Pantalla de ejemplo:
+
+![image](https://github.com/RicardoAlvarez1980/TatetiPreguntados_alvarez_coronel/assets/76076632/59283492-fe8c-4f06-8808-b9aa4dbc7c14)
+
+
 ## Personalización
 Si deseas personalizar el juego, puedes ajustar los estilos en el archivo style.css para cambiar el aspecto visual del tablero y los símbolos X y O. Además, puedes modificar la lógica del juego en el archivo main.js para añadir características adicionales o ajustar las reglas del juego según tus necesidades.
 
