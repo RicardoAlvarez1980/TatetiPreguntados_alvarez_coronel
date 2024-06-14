@@ -3,10 +3,13 @@ let currentPlayer = "X";
 let gameActive = true; // Variable para controlar si el juego está activo o no
 
 const cells = document.querySelectorAll("td");
+const restartBtn = document.getElementById("restartBtn");
 
 cells.forEach((cell) => {
   cell.addEventListener("click", handleClick);
 });
+
+restartBtn.addEventListener("click", restartGame);
 
 function handleClick(event) {
   if (!gameActive) return; // Si el juego no está activo, salimos de la función
@@ -76,4 +79,15 @@ function checkWin() {
 
 function checkDraw() {
   return board.every((cell) => cell !== ""); // Retorna true si todas las celdas están llenas (empate)
+}
+
+function restartGame() {
+  board = ["", "", "", "", "", "", "", "", ""];
+  currentPlayer = "X";
+  gameActive = true;
+
+  cells.forEach((cell) => {
+    cell.textContent = "";
+    cell.classList.remove("x", "o");
+  });
 }
