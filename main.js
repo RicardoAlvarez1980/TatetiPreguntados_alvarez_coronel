@@ -1,18 +1,32 @@
 let board = ["", "", "", "", "", "", "", "", ""];
 let currentPlayer = "X";
-let gameActive = true; // Variable para controlar si el juego está activo o no
+let gameActive = true;
+let questions = []; // Variable para almacenar las preguntas
+let currentQuestion = null; // Variable para almacenar la pregunta actual
 
 const cells = document.querySelectorAll("td");
 const restartBtn = document.getElementById("restartBtn");
+const questionModal = new bootstrap.Modal(document.getElementById('questionModal'));
+const questionText = document.getElementById('questionText');
+const optionsContainer = document.getElementById('options');
+const submitAnswerBtn = document.getElementById('submitAnswerBtn');
+
+// Cargar preguntas desde el archivo JSON
+fetch('preguntas.json')
+  .then(response => response.json())
+  .then(data => {
+    questions = data.preguntas;
+  });
 
 cells.forEach((cell) => {
   cell.addEventListener("click", handleClick);
 });
 
 restartBtn.addEventListener("click", restartGame);
+submitAnswerBtn.addEventListener("click", checkAnswer);
 
 function handleClick(event) {
-  if (!gameActive) return; // Si el juego no está activo, salimos de la función
+  if (!gameActive) return;
 
   const cellIndex = Array.from(cells).indexOf(event.target);
 
@@ -25,22 +39,16 @@ function handleClick(event) {
   event.target.classList.add(currentPlayer.toLowerCase());
 
   if (checkWin()) {
-    gameActive = false; // Desactivamos el juego
-
-    setTimeout(() => {
-      alert(`¡Jugador ${currentPlayer} ha ganado!`);
-    }, 100); // Mostrar alert después de 100ms para que se vea el último movimiento
-
+    gameActive = false;
+    showQuestion();
     return;
   }
 
   if (checkDraw()) {
-    gameActive = false; // Desactivamos el juego si hay empate
-
+    gameActive = false;
     setTimeout(() => {
       alert("¡Empate!");
-    }, 100); // Mostrar alert después de 100ms para que se vea el último movimiento
-
+    }, 100);
     return;
   }
 
@@ -51,12 +59,12 @@ function checkWin() {
   const winCondition = [
     [0, 1, 2],
     [3, 4, 5],
-    [6, 7, 8], // horizontales
+    [6, 7, 8],
     [0, 3, 6],
     [1, 4, 7],
-    [2, 5, 8], // verticales
+    [2, 5, 8],
     [0, 4, 8],
-    [2, 4, 6], // diagonales
+    [2, 4, 6],
   ];
 
   for (let index = 0; index < winCondition.length; index++) {
@@ -78,7 +86,7 @@ function checkWin() {
 }
 
 function checkDraw() {
-  return board.every((cell) => cell !== ""); // Retorna true si todas las celdas están llenas (empate)
+  return board.every((cell) => cell !== "");
 }
 
 function restartGame() {
@@ -90,4 +98,42 @@ function restartGame() {
     cell.textContent = "";
     cell.classList.remove("x", "o");
   });
+}
+
+function showQuestion() {
+  const randomIndex = Math.floor(Math.random() * questions.length);
+  currentQuestion = questions[randomIndex];
+  questionText.textContent = currentQuestion.pregunta;
+  optionsContainer.innerHTML = "";
+  currentQuestion.opciones.forEach(opcion => {
+    const optionElement = document.createElement("div");
+    optionElement.classList.add("form-check");
+    optionElement.innerHTML = `
+      <input class="form-check-input" type="radio" name="option" value="${opcion}" id="${opcion}">
+      <label class="form-check-label" for="${opcion}">
+        ${opcion}
+      </label>
+    `;
+    optionsContainer.appendChild(optionElement);
+  });
+  questionModal.show();
+}
+
+function checkAnswer() {
+  const selectedOption = document.querySelector('input[name="option"]:checked');
+  if (!selectedOption) {
+    alert("Por favor selecciona una opción.");
+    return;
+  }
+
+  const userAnswer = selectedOption.value;
+  if (userAnswer === currentQuestion.respuesta_correcta) {
+    alert(`¡Jugador ${currentPlayer} ha ganado!`);
+  } else {
+    currentPlayer = currentPlayer === "X" ? "O" : "X";
+    alert(`Respuesta incorrecta. ¡Jugador ${currentPlayer} ha ganado!`);
+  }
+
+  questionModal.hide();
+  restartGame();
 }
