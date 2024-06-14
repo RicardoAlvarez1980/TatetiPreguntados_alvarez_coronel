@@ -21,11 +21,10 @@ Este es un juego simple de "Te te ti" desarrollado con HTML, CSS y JavaScript, u
 
 El proyecto está organizado de la siguiente manera:
 
-te-te-ti/
-        index.html # Archivo HTML principal que contiene la estructura del juego
-        style.css # Archivo CSS con estilos personalizados para el juego
-        main.js # Archivo JavaScript con la lógica del juego
-        README.md # Este archivo, que proporciona una descripción del proyecto
+- index.html # Archivo HTML principal que contiene la estructura del juego
+- style.css # Archivo CSS con estilos personalizados para el juego
+- main.js # Archivo JavaScript con la lógica del juego
+- README.md # Este archivo, que proporciona una descripción del proyecto
 
 ## Instalación y Uso
 
