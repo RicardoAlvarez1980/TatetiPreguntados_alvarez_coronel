@@ -40,7 +40,8 @@ El proyecto está organizado de la siguiente manera:
 
 ## Pantalla de ejemplo:
 
-![image](https://github.com/RicardoAlvarez1980/TatetiPreguntados_alvarez_coronel/assets/76076632/59283492-fe8c-4f06-8808-b9aa4dbc7c14)
+![image](https://github.com/RicardoAlvarez1980/TatetiPreguntados_alvarez_coronel/assets/76076632/7d593eb2-626c-4b25-b57c-7c5a5751afef)
+
 
 
 ## Personalización
