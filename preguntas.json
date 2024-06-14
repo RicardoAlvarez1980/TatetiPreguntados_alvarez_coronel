@@ -1,0 +1,334 @@
+{
+  "preguntas": [
+    {
+      "id": 1,
+      "pregunta": "¿Cuál de las siguientes es una unidad básica de almacenamiento en computadoras?",
+      "opciones": [
+        "a) Gigabyte",
+        "b) Hertz",
+        "c) Watt",
+        "d) Newton"
+      ],
+      "respuesta_correcta": "a) Gigabyte"
+    },
+    {
+      "id": 2,
+      "pregunta": "¿Qué significa la sigla 'CPU'?",
+      "opciones": [
+        "a) Central Processing Unit",
+        "b) Computer Programming Utility",
+        "c) Control Processing Unit",
+        "d) Central Protocol Unit"
+      ],
+      "respuesta_correcta": "a) Central Processing Unit"
+    },
+    {
+      "id": 3,
+      "pregunta": "¿Qué es un firewall en el contexto de la informática?",
+      "opciones": [
+        "a) Un programa que protege contra virus",
+        "b) Un sistema de protección contra incendios",
+        "c) Un sistema de seguridad que controla el tráfico de red",
+        "d) Un programa para diseño gráfico"
+      ],
+      "respuesta_correcta": "c) Un sistema de seguridad que controla el tráfico de red"
+    },
+    {
+      "id": 4,
+      "pregunta": "¿Cuál de las siguientes opciones describe mejor qué es HTML?",
+      "opciones": [
+        "a) Un lenguaje de programación para bases de datos",
+        "b) Un lenguaje de marcado para crear páginas web",
+        "c) Un sistema operativo para servidores web",
+        "d) Un tipo de malware"
+      ],
+      "respuesta_correcta": "b) Un lenguaje de marcado para crear páginas web"
+    },
+    {
+      "id": 5,
+      "pregunta": "¿Qué es un 'router' en una red de computadoras?",
+      "opciones": [
+        "a) Un dispositivo para almacenar archivos",
+        "b) Un dispositivo que conecta redes de computadoras",
+        "c) Un tipo de software antivirus",
+        "d) Un dispositivo para imprimir documentos"
+      ],
+      "respuesta_correcta": "b) Un dispositivo que conecta redes de computadoras"
+    },
+    {
+      "id": 6,
+      "pregunta": "¿Cuál de las siguientes opciones describe mejor qué es un 'driver'?",
+      "opciones": [
+        "a) Un programa que controla un dispositivo específico",
+        "b) Un dispositivo de almacenamiento en la nube",
+        "c) Un tipo de computadora portátil",
+        "d) Un tipo de teclado"
+      ],
+      "respuesta_correcta": "a) Un programa que controla un dispositivo específico"
+    },
+    {
+      "id": 7,
+      "pregunta": "¿Cuál de las siguientes es una característica de un sistema operativo multitarea?",
+      "opciones": [
+        "a) Ejecuta un solo programa a la vez",
+        "b) Permite ejecutar varios programas simultáneamente",
+        "c) Sólo funciona en dispositivos móviles",
+        "d) No permite la conexión a internet"
+      ],
+      "respuesta_correcta": "b) Permite ejecutar varios programas simultáneamente"
+    },
+    {
+      "id": 8,
+      "pregunta": "¿Qué es un 'URL'?",
+      "opciones": [
+        "a) Un código de programación",
+        "b) Una dirección de internet",
+        "c) Una unidad de almacenamiento",
+        "d) Una interfaz gráfica de usuario"
+      ],
+      "respuesta_correcta": "b) Una dirección de internet"
+    },
+    {
+      "id": 9,
+      "pregunta": "¿Qué significa 'RAM' en informática?",
+      "opciones": [
+        "a) Random Access Memory",
+        "b) Read-Only Memory",
+        "c) Remote Access Management",
+        "d) Real-time Application Monitoring"
+      ],
+      "respuesta_correcta": "a) Random Access Memory"
+    },
+    {
+      "id": 10,
+      "pregunta": "¿Qué es el 'phishing'?",
+      "opciones": [
+        "a) Un tipo de malware",
+        "b) Una técnica de ingeniería social para obtener información confidencial",
+        "c) Una aplicación de redes sociales",
+        "d) Un sistema de filtrado de correo electrónico"
+      ],
+      "respuesta_correcta": "b) Una técnica de ingeniería social para obtener información confidencial"
+    },
+    {
+      "id": 11,
+      "pregunta": "¿Qué es un 'emoji' en el contexto de la informática y las comunicaciones?",
+      "opciones": [
+        "a) Un tipo de virus informático",
+        "b) Un símbolo utilizado para expresar emociones en mensajes de texto y redes sociales",
+        "c) Un sistema operativo para teléfonos móviles",
+        "d) Una red social"
+      ],
+      "respuesta_correcta": "b) Un símbolo utilizado para expresar emociones en mensajes de texto y redes sociales"
+    },
+    {
+      "id": 12,
+      "pregunta": "¿Qué es un 'backup' en informática?",
+      "opciones": [
+        "a) Un dispositivo de entrada",
+        "b) Una copia de seguridad de datos",
+        "c) Un tipo de programa antivirus",
+        "d) Un método para hackear sistemas"
+      ],
+      "respuesta_correcta": "b) Una copia de seguridad de datos"
+    },
+    {
+      "id": 13,
+      "pregunta": "¿Qué es un 'hacker ético'?",
+      "opciones": [
+        "a) Una persona que prueba la seguridad de sistemas informáticos de manera legal y ética",
+        "b) Un delincuente cibernético",
+        "c) Un desarrollador de software",
+        "d) Un investigador de mercado en línea"
+      ],
+      "respuesta_correcta": "a) Una persona que prueba la seguridad de sistemas informáticos de manera legal y ética"
+    },
+    {
+      "id": 14,
+      "pregunta": "¿Cuál de las siguientes opciones describe mejor qué es 'cloud computing'?",
+      "opciones": [
+        "a) Un sistema operativo basado en la nube",
+        "b) El almacenamiento de datos en una computadora local",
+        "c) El uso de recursos informáticos a través de internet",
+        "d) Un tipo de ataque informático"
+      ],
+      "respuesta_correcta": "c) El uso de recursos informáticos a través de internet"
+    },
+    {
+      "id": 15,
+      "pregunta": "¿Qué es el 'software libre'?",
+      "opciones": [
+        "a) Un software que se puede descargar sin restricciones",
+        "b) Un software que no tiene errores",
+        "c) Un software que es exclusivo para uso comercial",
+        "d) Un software que no requiere hardware para funcionar"
+      ],
+      "respuesta_correcta": "a) Un software que se puede descargar sin restricciones"
+    },
+    {
+      "id": 16,
+      "pregunta": "¿Qué es un 'algoritmo' en informática?",
+      "opciones": [
+        "a) Un virus informático",
+        "b) Una secuencia de instrucciones lógicas diseñadas para realizar una tarea específica",
+        "c) Un tipo de dispositivo de entrada",
+        "d) Una red social"
+      ],
+      "respuesta_correcta": "b) Una secuencia de instrucciones lógicas diseñadas para realizar una tarea específica"
+    },
+    {
+      "id": 17,
+      "pregunta": "¿Qué es un 'malware'?",
+      "opciones": [
+        "a) Un software malicioso diseñado para dañar o infiltrarse en sistemas informáticos",
+        "b) Un antivirus",
+        "c) Un tipo de sistema operativo",
+        "d) Una unidad de almacenamiento"
+      ],
+      "respuesta_correcta": "a) Un software malicioso diseñado para dañar o infiltrarse en sistemas informáticos"
+    },
+    {
+      "id": 18,
+      "pregunta": "¿Cuál de las siguientes opciones describe mejor qué es un 'cookie' en internet?",
+      "opciones": [
+        "a) Un tipo de virus informático",
+        "b) Un archivo de texto que los sitios web colocan en el dispositivo del usuario para recordar información",
+        "c) Un tipo de conexión a internet",
+        "d) Una forma de ataque cibernético"
+      ],
+      "respuesta_correcta": "b) Un archivo de texto que los sitios web colocan en el dispositivo del usuario para recordar información"
+    },
+    {
+      "id": 19,
+      "pregunta": "¿Qué es un 'bit' en informática?",
+      "opciones": [
+        "a) La unidad básica de información en sistemas de cómputo",
+        "b) Un dispositivo de entrada",
+        "c) Un sistema de antivirus",
+        "d) Una red social"
+      ],
+      "respuesta_correcta": "a) La unidad básica de información en sistemas de cómputo"
+    },
+    {
+      "id": 20,
+      "pregunta": "¿Qué es un 'sistema operativo'?",
+      "opciones": [
+        "a) Un tipo de hardware",
+        "b) Un programa que gestiona recursos y permite la interacción con la computadora",
+        "c) Una interfaz gráfica de usuario",
+        "d) Una red social"
+      ],
+      "respuesta_correcta": "b) Un programa que gestiona recursos y permite la interacción con la computadora"
+    },
+    {
+      "id": 21,
+      "pregunta": "¿Qué es un 'bus USB'?",
+      "opciones": [
+        "a) Un tipo de computadora portátil",
+        "b) Un tipo de conexión de hardware para dispositivos externos",
+        "c) Una red social",
+        "d) Un tipo de antivirus"
+      ],
+      "respuesta_correcta": "b) Un tipo de conexión de hardware para dispositivos externos"
+    },
+    {
+      "id": 22,
+      "pregunta": "¿Qué es la 'realidad aumentada'?",
+      "opciones": [
+        "a) Una técnica para mejorar la seguridad en línea",
+        "b) Una tecnología que combina el mundo real con elementos virtuales",
+        "c) Un tipo de software para programar",
+        "d) Un tipo de virus informático"
+      ],
+      "respuesta_correcta": "b) Una tecnología que combina el mundo real con elementos virtuales"
+    },
+    {
+      "id": 23,
+      "pregunta": "¿Qué es un 'phablet'?",
+      "opciones": [
+        "a) Una combinación de teléfono y tableta",
+        "b) Un tipo de dispositivo de entrada",
+        "c) Un sistema operativo",
+        "d) Un programa de edición de fotos"
+      ],
+      "respuesta_correcta": "a) Una combinación de teléfono y tableta"
+    },
+    {
+      "id": 24,
+      "pregunta": "¿Qué es un 'bot' en internet?",
+      "opciones": [
+        "a) Un software que realiza tareas automáticas",
+        "b) Una conexión de red",
+        "c) Un tipo de virus",
+        "d) Un tipo de antivirus"
+      ],
+      "respuesta_correcta": "a) Un software que realiza tareas automáticas"
+    },
+    {
+      "id": 25,
+      "pregunta": "¿Qué significa 'HTTP' en una dirección web?",
+      "opciones": [
+        "a) HyperText Transfer Protocol",
+        "b) Home Time Protocol",
+        "c) High Transfer Protocol",
+        "d) Host Text Transfer Protocol"
+      ],
+      "respuesta_correcta": "a) HyperText Transfer Protocol"
+    },
+    {
+      "id": 26,
+      "pregunta": "¿Qué es un 'LAN' en redes de computadoras?",
+      "opciones": [
+        "a) Local Area Network",
+        "b) Large Area Network",
+        "c) Light Area Network",
+        "d) Long Area Network"
+      ],
+      "respuesta_correcta": "a) Local Area Network"
+    },
+    {
+      "id": 27,
+      "pregunta": "¿Cuál de las siguientes opciones describe mejor qué es 'SEO'?",
+      "opciones": [
+        "a) Search Engine Optimization, técnicas para mejorar el posicionamiento en buscadores",
+        "b) Un sistema operativo para servidores",
+        "c) Un tipo de malware",
+        "d) Una red social"
+      ],
+      "respuesta_correcta": "a) Search Engine Optimization, técnicas para mejorar el posicionamiento en buscadores"
+    },
+    {
+      "id": 28,
+      "pregunta": "¿Qué es un 'bug' en programación?",
+      "opciones": [
+        "a) Un error o defecto en un programa de software",
+        "b) Un tipo de virus",
+        "c) Una función del sistema operativo",
+        "d) Un dispositivo de entrada"
+      ],
+      "respuesta_correcta": "a) Un error o defecto en un programa de software"
+    },
+    {
+      "id": 29,
+      "pregunta": "¿Qué es un 'phablet'?",
+      "opciones": [
+        "a) Una combinación de teléfono y tableta",
+        "b) Un tipo de dispositivo de entrada",
+        "c) Un sistema operativo",
+        "d) Un programa de edición de fotos"
+      ],
+      "respuesta_correcta": "a) Una combinación de teléfono y tableta"
+    },
+    {
+      "id": 30,
+      "pregunta": "¿Qué es un 'bot' en internet?",
+      "opciones": [
+        "a) Un software que realiza tareas automáticas",
+        "b) Una conexión de red",
+        "c) Un tipo de virus",
+        "d) Un tipo de antivirus"
+      ],
+      "respuesta_correcta": "a) Un software que realiza tareas automáticas"
+    }
+  ]
+}
