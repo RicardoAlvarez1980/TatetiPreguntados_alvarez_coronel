@@ -1,55 +1,72 @@
 let board = ["", "", "", "", "", "", "", "", ""];
 let currentPlayer = "X";
 let gameActive = true;
-let questions = []; // Variable para almacenar las preguntas
-let currentQuestion = null; // Variable para almacenar la pregunta actual
+let questions = []; // JSON de preguntas cargado
+let currentCellIndex = null; // Índice de la celda seleccionada
 
 const cells = document.querySelectorAll("td");
 const restartBtn = document.getElementById("restartBtn");
-const questionModal = new bootstrap.Modal(document.getElementById('questionModal'));
-const questionText = document.getElementById('questionText');
-const optionsContainer = document.getElementById('options');
-const submitAnswerBtn = document.getElementById('submitAnswerBtn');
 
-// Cargar preguntas desde el archivo JSON
-fetch('preguntas.json')
-  .then(response => response.json())
-  .then(data => {
-    questions = data.preguntas;
-  });
-
-cells.forEach((cell) => {
-  cell.addEventListener("click", handleClick);
+cells.forEach((cell, index) => {
+  cell.addEventListener("click", () => handleCellClick(index));
 });
 
 restartBtn.addEventListener("click", restartGame);
-submitAnswerBtn.addEventListener("click", checkAnswer);
 
-function handleClick(event) {
+fetch('preguntas.json') // Ajusta la ruta a tu archivo JSON si es necesario
+  .then(response => response.json())
+  .then(data => questions = data.preguntas)
+  .catch(error => console.error('Error loading questions:', error));
+
+function handleCellClick(cellIndex) {
   if (!gameActive) return;
+  if (board[cellIndex] !== "") return;
 
-  const cellIndex = Array.from(cells).indexOf(event.target);
+  currentCellIndex = cellIndex;
+  showQuestionModal();
+}
 
-  if (board[cellIndex] !== "") {
-    return;
-  }
+function showQuestionModal() {
+  const randomQuestionIndex = Math.floor(Math.random() * questions.length);
+  const question = questions[randomQuestionIndex];
 
-  board[cellIndex] = currentPlayer;
-  event.target.textContent = currentPlayer;
-  event.target.classList.add(currentPlayer.toLowerCase());
+  document.getElementById('currentPlayerLabel').textContent = currentPlayer;
+  document.getElementById('questionText').textContent = question.pregunta;
+  const answerOptions = document.getElementById('answerOptions');
+  answerOptions.innerHTML = "";
 
-  if (checkWin()) {
-    gameActive = false;
-    showQuestion();
-    return;
-  }
+  question.opciones.forEach((opcion) => {
+    const optionButton = document.createElement('button');
+    optionButton.textContent = opcion;
+    optionButton.classList.add('list-group-item', 'list-group-item-action');
+    optionButton.addEventListener('click', () => handleAnswerClick(opcion, question.respuesta_correcta));
+    answerOptions.appendChild(optionButton);
+  });
 
-  if (checkDraw()) {
-    gameActive = false;
-    setTimeout(() => {
-      alert("¡Empate!");
-    }, 100);
-    return;
+  $('#questionModal').modal('show');
+}
+
+function handleAnswerClick(selectedAnswer, correctAnswer) {
+  $('#questionModal').modal('hide');
+
+  if (selectedAnswer === correctAnswer) {
+    board[currentCellIndex] = currentPlayer;
+    cells[currentCellIndex].textContent = currentPlayer;
+    cells[currentCellIndex].classList.add(currentPlayer.toLowerCase());
+
+    if (checkWin()) {
+      gameActive = false;
+      setTimeout(() => alert(`¡Jugador ${currentPlayer} ha ganado!`), 100);
+      return;
+    }
+
+    if (checkDraw()) {
+      gameActive = false;
+      setTimeout(() => alert("¡Empate!"), 100);
+      return;
+    }
+  } else {
+    alert(`Respuesta incorrecta. Turno del jugador ${currentPlayer === "X" ? "O" : "X"}`);
   }
 
   currentPlayer = currentPlayer === "X" ? "O" : "X";
@@ -57,83 +74,28 @@ function handleClick(event) {
 
 function checkWin() {
   const winCondition = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6],
+    [0, 1, 2], [3, 4, 5], [6, 7, 8], 
+    [0, 3, 6], [1, 4, 7], [2, 5, 8], 
+    [0, 4, 8], [2, 4, 6]
   ];
 
-  for (let index = 0; index < winCondition.length; index++) {
-    const winElement = winCondition[index];
-    let isWin = true;
-    for (let index2 = 0; index2 < winElement.length; index2++) {
-      const posWin = winElement[index2];
-      if (board[posWin] !== currentPlayer) {
-        isWin = false;
-        break;
-      }
-    }
-    if (isWin) {
-      return true;
-    }
-  }
-
-  return false;
+  return winCondition.some(condition => 
+    condition.every(index => board[index] === currentPlayer)
+  );
 }
 
 function checkDraw() {
-  return board.every((cell) => cell !== "");
+  return board.every(cell => cell !== "");
 }
 
 function restartGame() {
   board = ["", "", "", "", "", "", "", "", ""];
   currentPlayer = "X";
   gameActive = true;
+  currentCellIndex = null;
 
-  cells.forEach((cell) => {
+  cells.forEach(cell => {
     cell.textContent = "";
     cell.classList.remove("x", "o");
   });
-}
-
-function showQuestion() {
-  const randomIndex = Math.floor(Math.random() * questions.length);
-  currentQuestion = questions[randomIndex];
-  questionText.textContent = currentQuestion.pregunta;
-  optionsContainer.innerHTML = "";
-  currentQuestion.opciones.forEach(opcion => {
-    const optionElement = document.createElement("div");
-    optionElement.classList.add("form-check");
-    optionElement.innerHTML = `
-      <input class="form-check-input" type="radio" name="option" value="${opcion}" id="${opcion}">
-      <label class="form-check-label" for="${opcion}">
-        ${opcion}
-      </label>
-    `;
-    optionsContainer.appendChild(optionElement);
-  });
-  questionModal.show();
-}
-
-function checkAnswer() {
-  const selectedOption = document.querySelector('input[name="option"]:checked');
-  if (!selectedOption) {
-    alert("Por favor selecciona una opción.");
-    return;
-  }
-
-  const userAnswer = selectedOption.value;
-  if (userAnswer === currentQuestion.respuesta_correcta) {
-    alert(`¡Jugador ${currentPlayer} ha ganado!`);
-  } else {
-    currentPlayer = currentPlayer === "X" ? "O" : "X";
-    alert(`Respuesta incorrecta. ¡Jugador ${currentPlayer} ha ganado!`);
-  }
-
-  questionModal.hide();
-  restartGame();
 }
