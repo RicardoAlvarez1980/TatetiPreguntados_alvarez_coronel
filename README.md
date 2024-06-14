@@ -42,5 +42,5 @@ El proyecto está organizado de la siguiente manera:
 Si deseas personalizar el juego, puedes ajustar los estilos en el archivo style.css para cambiar el aspecto visual del tablero y los símbolos X y O. Además, puedes modificar la lógica del juego en el archivo main.js para añadir características adicionales o ajustar las reglas del juego según tus necesidades.
 
 ## Autores
-ALVAREZ, Ricardo
+ALVAREZ, Ricardo; 
 CORONEL, Adrián
