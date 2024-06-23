@@ -1,0 +1,134 @@
+body {
+  background-image: url(../images/fondo.jpg);
+  background-repeat: no-repeat;
+  background-size: 100% 110%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #f0f0f0; /* Color de fondo para el cuerpo */
+}
+
+.container {
+  text-align: center; /* Alinear contenido al centro */
+}
+
+.custom-board {
+  display: inline-block; /* Convertir el contenedor en bloque en línea */
+  width: 306px; /* Ancho total del tablero */
+  height: 306px; /* Altura total del tablero */
+  margin: 0 auto; /* Margen automático a los lados para centrar */
+}
+
+.custom-board table {
+  width: 100%; /* Ancho completo de la tabla */
+  height: 100%; /* Altura completa de la tabla */
+  border-collapse: collapse; /* Colapso de los bordes de la tabla */
+}
+
+.custom-board td {
+  width: 33.33%; /* Ancho de cada celda (33.33% para 3 celdas por fila) */
+  height: 33.33%; /* Altura de cada celda (33.33% para 3 celdas por columna) */
+  font-size: 3rem; /* Tamaño del texto */
+  font-weight: bold; /* Negrita */
+  text-align: center; /* Alinear texto al centro */
+  vertical-align: middle; /* Alinear verticalmente al centro */
+  border: 4px solid antiquewhite; /* Grosor del borde de cada celda */
+}
+
+.custom-board td.top-left {
+  border-top: none;
+  border-left: none;
+}
+
+.custom-board td.top-right {
+  border-top: none;
+  border-right: none;
+}
+
+.custom-board td.bottom-left {
+  border-bottom: none;
+  border-left: none;
+}
+
+.custom-board td.bottom-right {
+  border-bottom: none;
+  border-right: none;
+}
+
+.custom-board td.top {
+  border-top: none;
+}
+
+.custom-board td.bottom {
+  border-bottom: none;
+}
+
+.custom-board td.left {
+  border-left: none;
+}
+
+.custom-board td.right {
+  border-right: none;
+}
+
+.x {
+  color: #db4747; /* Color rojo para la X */
+  font-family: "Schoolbell", cursive;
+  font-weight: bold;
+}
+
+.o {
+  color: #4ad854; /* Color rojo para la X */
+  font-family: "Schoolbell", cursive;
+  font-weight: bold;
+}
+
+.custom-board td:hover {
+  animation: blink 1.3s infinite; /* Animación de parpadeo */
+  cursor: url(../images/cursorTiza.png),auto; /* Cambio de cursor al pasar el mouse */
+}
+
+@keyframes blink {
+  0%, 100% {
+      background-color: rgba(211, 211, 211, 0.514);
+  }
+  50% {
+      background-color: transparent;
+  }
+}
+
+.pizarra {
+  background-image: url(../images/pizarra.jpg);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  width: 800px;
+  background-position: center;
+  align-items: center;
+  text-align: center;
+  border: 1px black solid;
+}
+
+h1 {
+  font-family: "Schoolbell", cursive;
+  color: antiquewhite;
+  font-weight: bold;
+}
+
+.reinicio {
+  background-color: transparent;
+  border: none;
+  font-size: 1.5rem;
+  font-family: "Schoolbell", cursive;
+  color: antiquewhite;
+  margin-bottom: 5px ;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  display: block;
+  width: 100%;
+}
