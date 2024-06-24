@@ -7,6 +7,10 @@ let currentCellIndex = null; // Índice de la celda seleccionada
 const cells = document.querySelectorAll("td");
 const restartBtn = document.getElementById("restartBtn");
 
+// Sonidos
+const tizaSound = document.getElementById("tizaSound");
+const restartSound = document.getElementById("restartSound");
+
 cells.forEach((cell, index) => {
   cell.addEventListener("click", () => handleCellClick(index));
 });
@@ -51,8 +55,27 @@ function handleAnswerClick(selectedAnswer, correctAnswer) {
 
   if (selectedAnswer === correctAnswer) {
     board[currentCellIndex] = currentPlayer;
+   // Agregar animación solo la primera vez que se escribe en la celda
+   if (!cells[currentCellIndex].classList.contains('animated')) {
+    cells[currentCellIndex].textContent = currentPlayer;
+    cells[currentCellIndex].classList.add('animated', currentPlayer.toLowerCase());
+
+    // Reproducir sonido dependiendo del jugador actual
+    if (currentPlayer === "X" || "O") {
+      tizaSound.play();
+    } 
+  } else {
     cells[currentCellIndex].textContent = currentPlayer;
     cells[currentCellIndex].classList.add(currentPlayer.toLowerCase());
+  }
+
+// Mostrar el botón de reinicio si se ha ocupado al menos una celda después de reiniciar
+  if (board.some(cell => cell !== "")) {
+      document.getElementById("restartBtn").classList.add("show");
+      document.getElementById("restartBtn").style.display = "block";
+      document.getElementById("restartBtn").style.margin = "0 auto";
+    }
+
 
     if (checkWin()) {
       gameActive = false;
@@ -73,19 +96,19 @@ function handleAnswerClick(selectedAnswer, correctAnswer) {
 }
 
 function checkWin() {
-  const winCondition = [
-    [0, 1, 2], [3, 4, 5], [6, 7, 8], 
-    [0, 3, 6], [1, 4, 7], [2, 5, 8], 
-    [0, 4, 8], [2, 4, 6]
-  ];
+const winCondition = [
+  [0, 1, 2], [3, 4, 5], [6, 7, 8], 
+  [0, 3, 6], [1, 4, 7], [2, 5, 8], 
+  [0, 4, 8], [2, 4, 6]
+];
 
-  return winCondition.some(condition => 
-    condition.every(index => board[index] === currentPlayer)
-  );
+return winCondition.some(condition => 
+  condition.every(index => board[index] === currentPlayer)
+);
 }
 
 function checkDraw() {
-  return board.every(cell => cell !== "");
+return board.every(cell => cell !== "");
 }
 
 function restartGame() {
@@ -96,6 +119,17 @@ function restartGame() {
 
   cells.forEach(cell => {
     cell.textContent = "";
-    cell.classList.remove("x", "o");
+    cell.classList.remove("x", "o", "animated");
   });
+
+  // Ocultar el botón de reinicio y remover la clase "show"
+  document.getElementById("restartBtn").classList.remove("show");
+  document.getElementById("restartBtn").style.display = "none";
 }
+// Agregar evento de clic al botón de reinicio
+restartBtn.addEventListener("click", () => {
+  // Reproducir el sonido de reinicio
+  restartSound.play();
+  // Llamar a la función para reiniciar el juego
+  restartGame();
+});
