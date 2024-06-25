@@ -156,4 +156,39 @@ footer {
   text-align: center;
   display: block;
   width: 100%;
+  margin-bottom: 0;
+}
+
+.sonidos{
+  display: block;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  text-align: center;
+}
+.boton-estilo {
+  font-family: 'Homer Simpson Revised', sans-serif;
+  background-color: #158721; /* Color de fondo */
+  border: 2px solid rgb(5, 66, 5);
+  border-radius: 25px;
+  color:rgb(225, 252, 231); /* Color del texto */
+  padding: 15px 32px;
+  min-width: 13rem;
+  font-weight: bolder;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  margin: 10px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  box-shadow: inset  0px -8px #0a5e10;
+}
+
+.boton-estilo:hover {
+  background-color: rgb(39, 166, 30) /* Cambio de color en el hover */
+}
+
+.boton-estilo:active {
+  background-color: #0a5e10; /* Cambio de color al hacer clic */
 }

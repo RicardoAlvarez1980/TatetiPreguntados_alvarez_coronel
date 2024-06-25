@@ -1,3 +1,32 @@
+function musicaInicio(){
+  document.addEventListener('DOMContentLoaded', (event) => {
+    // Reproducir música al cargar la página
+    var audio = document.getElementById('music')
+    audio.play();
+  
+  
+      // Obtener el botón
+      var botonMusica = document.getElementById('botonMusica');
+    
+      // Definir el comportamiento al hacer clic en el botón
+      var musicaActiva = false;
+      botonMusica.addEventListener('click', function() {
+        if (musicaActiva) {
+          audio.pause();
+          musicaActiva = false;
+          botonMusica.innerHTML = 'MÚSICA: NO';
+        } else {
+          audio.play();
+          musicaActiva = true;
+          botonMusica.innerHTML = 'MÚSICA: SI';
+        }
+      });
+    });
+  
+  
+};
+musicaInicio();
+
 let board = ["", "", "", "", "", "", "", "", ""];
 let currentPlayer = "X";
 let gameActive = true;
@@ -10,6 +39,8 @@ const restartBtn = document.getElementById("restartBtn");
 // Sonidos
 const tizaSound = document.getElementById("tizaSound");
 const restartSound = document.getElementById("restartSound");
+const pop = document.getElementById("pop");
+
 
 cells.forEach((cell, index) => {
   cell.addEventListener("click", () => handleCellClick(index));
@@ -27,6 +58,7 @@ function handleCellClick(cellIndex) {
   if (board[cellIndex] !== "") return;
 
   currentCellIndex = cellIndex;
+  pop.play();
   showQuestionModal();
 }
 
@@ -133,3 +165,4 @@ restartBtn.addEventListener("click", () => {
   // Llamar a la función para reiniciar el juego
   restartGame();
 });
+
