@@ -1,29 +1,43 @@
-function musicaInicio(){
+function musicaInicio() {
   document.addEventListener('DOMContentLoaded', (event) => {
     // Reproducir música al cargar la página
     var audio = document.getElementById('music')
-    audio.play();
-  
-  
-      // Obtener el botón
-      var botonMusica = document.getElementById('botonMusica');
-    
-      // Definir el comportamiento al hacer clic en el botón
-      var musicaActiva = false;
-      botonMusica.addEventListener('click', function() {
-        if (musicaActiva) {
-          audio.pause();
-          musicaActiva = false;
-          botonMusica.innerHTML = 'MÚSICA: NO';
-        } else {
-          audio.play();
-          musicaActiva = true;
-          botonMusica.innerHTML = 'MÚSICA: SI';
-        }
-      });
+    audio.pause();
+
+
+    // Obtener el botón
+    var botonMusica = document.getElementById('botonMusica');
+
+
+    // Definir el comportamiento al hacer clic en el botón
+    var musicaActiva = false;
+    botonMusica.addEventListener('click', function () {
+      if (musicaActiva) {
+        audio.pause();
+        musicaActiva = false;
+        botonMusica.innerHTML = 'MÚSICA: NO';
+      } else {
+        audio.play();
+        musicaActiva = true;
+        botonMusica.innerHTML = 'MÚSICA: SI';
+      }
     });
+  });
+
+  var botonEfecto = document.getElementById('botonEfecto');
+  var efectosActivos = true; // Por defecto, los efectos están activos
   
-  
+  botonEfecto.addEventListener('click', function() {
+    if (efectosActivos) {
+      efectosActivos = false;
+      botonEfecto.innerHTML = 'EFECTOS: NO';
+    } else {
+      efectosActivos = true;
+      botonEfecto.innerHTML = 'EFECTOS: SI';
+    }
+  });
+
+
 };
 musicaInicio();
 
@@ -53,15 +67,16 @@ fetch('preguntas.json') // Ajusta la ruta a tu archivo JSON si es necesario
   .then(data => questions = data.preguntas)
   .catch(error => console.error('Error loading questions:', error));
 
-function handleCellClick(cellIndex) {
-  if (!gameActive) return;
-  if (board[cellIndex] !== "") return;
-
-  currentCellIndex = cellIndex;
-  pop.play();
-  showQuestionModal();
-}
-
+  function handleCellClick(cellIndex) {
+    if (!gameActive) return;
+    if (board[cellIndex] !== "") return;
+  
+    currentCellIndex = cellIndex;
+    
+      pop.play();
+    
+    showQuestionModal();
+  }
 function showQuestionModal() {
   const randomQuestionIndex = Math.floor(Math.random() * questions.length);
   const question = questions[randomQuestionIndex];
@@ -87,22 +102,22 @@ function handleAnswerClick(selectedAnswer, correctAnswer) {
 
   if (selectedAnswer === correctAnswer) {
     board[currentCellIndex] = currentPlayer;
-   // Agregar animación solo la primera vez que se escribe en la celda
-   if (!cells[currentCellIndex].classList.contains('animated')) {
-    cells[currentCellIndex].textContent = currentPlayer;
-    cells[currentCellIndex].classList.add('animated', currentPlayer.toLowerCase());
+    // Agregar animación solo la primera vez que se escribe en la celda
+    if (!cells[currentCellIndex].classList.contains('animated')) {
+      cells[currentCellIndex].textContent = currentPlayer;
+      cells[currentCellIndex].classList.add('animated', currentPlayer.toLowerCase());
 
-    // Reproducir sonido dependiendo del jugador actual
-    if (currentPlayer === "X" || "O") {
-      tizaSound.play();
-    } 
-  } else {
-    cells[currentCellIndex].textContent = currentPlayer;
-    cells[currentCellIndex].classList.add(currentPlayer.toLowerCase());
-  }
+      // Reproducir sonido dependiendo del jugador actual
+      if (currentPlayer === "X" || "O") {
+        tizaSound.play();
+      }
+    } else {
+      cells[currentCellIndex].textContent = currentPlayer;
+      cells[currentCellIndex].classList.add(currentPlayer.toLowerCase());
+    }
 
-// Mostrar el botón de reinicio si se ha ocupado al menos una celda después de reiniciar
-  if (board.some(cell => cell !== "")) {
+    // Mostrar el botón de reinicio si se ha ocupado al menos una celda después de reiniciar
+    if (board.some(cell => cell !== "")) {
       document.getElementById("restartBtn").classList.add("show");
       document.getElementById("restartBtn").style.display = "block";
       document.getElementById("restartBtn").style.margin = "0 auto";
@@ -128,19 +143,19 @@ function handleAnswerClick(selectedAnswer, correctAnswer) {
 }
 
 function checkWin() {
-const winCondition = [
-  [0, 1, 2], [3, 4, 5], [6, 7, 8], 
-  [0, 3, 6], [1, 4, 7], [2, 5, 8], 
-  [0, 4, 8], [2, 4, 6]
-];
+  const winCondition = [
+    [0, 1, 2], [3, 4, 5], [6, 7, 8],
+    [0, 3, 6], [1, 4, 7], [2, 5, 8],
+    [0, 4, 8], [2, 4, 6]
+  ];
 
-return winCondition.some(condition => 
-  condition.every(index => board[index] === currentPlayer)
-);
+  return winCondition.some(condition =>
+    condition.every(index => board[index] === currentPlayer)
+  );
 }
 
 function checkDraw() {
-return board.every(cell => cell !== "");
+  return board.every(cell => cell !== "");
 }
 
 function restartGame() {

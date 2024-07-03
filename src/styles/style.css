@@ -124,6 +124,9 @@ body {
   align-items: center;
   text-align: center;
   border: 1px black solid;
+  border-radius: 5px;
+  box-shadow: 5px 5px 1.5rem rgb(75, 73, 73);
+
 }
 
 h1 {
@@ -191,4 +194,29 @@ footer {
 
 .boton-estilo:active {
   background-color: #0a5e10; /* Cambio de color al hacer clic */
+}
+
+.left-floating {
+  width: 30rem;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  transform:  translate(0%, -2%);
+}
+
+.right-floating {
+  width: 20rem;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+  transform:  translate(-15%, -2%);
+}
+
+
+@media (max-width: 1300px){
+  .right-floating, .left-floating {
+    display: none;
+  }
 }
