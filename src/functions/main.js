@@ -24,19 +24,7 @@ function musicaInicio() {
     });
   });
 
-  var botonEfecto = document.getElementById('botonEfecto');
-  var efectosActivos = true; // Por defecto, los efectos están activos
   
-  botonEfecto.addEventListener('click', function() {
-    if (efectosActivos) {
-      efectosActivos = false;
-      botonEfecto.innerHTML = 'EFECTOS: NO';
-    } else {
-      efectosActivos = true;
-      botonEfecto.innerHTML = 'EFECTOS: SI';
-    }
-  });
-
 
 };
 musicaInicio();
